@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/security
+    username: postgres
+    password: toor
+
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+#      ddl-auto: create-drop
+      ddl-auto: none
+
+server:
+  port: 8080

@@ -19,7 +19,7 @@ public class UserRole {
     @Column(name = "user_role")
     private String userRole;
 
-    @OneToMany(mappedBy="role_id")
+    @ManyToMany(mappedBy="userRoles")
     private List<UserAccount> userAccountList;
 
     public UserRole() {

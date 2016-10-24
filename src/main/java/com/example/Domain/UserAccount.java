@@ -2,6 +2,8 @@ package com.example.Domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Michael on 16/10/2016.
@@ -15,26 +17,29 @@ public class UserAccount {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "userName")
     private String userName;
 
+    @Column(name = "password")
     private String password;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "role_id")
-    private UserRole role_id;
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "role_id")
+//    private UserRole role_id;
 
-    public UserAccount(UserAccount userAccount, UserRole userRole) {
-        this.userName = userAccount.getUserName();
-        this.password = userAccount.getPassword();
-        this.role_id = userRole;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "userRoles")
+    private List<UserRole> userRoles;
+
+    public UserAccount() {
     }
 
-    public UserAccount(String username, String password, UserRole userRole) {
-        this.userName = username;
+    public UserAccount(String userName, String password) {
+        this.userRoles = new ArrayList<>();
+        this.userName = userName;
         this.password = password;
-        this.role_id = userRole;
-    }
 
+    }
 
 
     public Long getId() {
@@ -61,12 +66,12 @@ public class UserAccount {
         this.password = password;
     }
 
-    public UserRole getRole_id() {
-        return role_id;
+    public List<UserRole> getUserRoles() {
+        return userRoles;
     }
 
-    public void setRole_id(UserRole role_id) {
-        this.role_id = role_id;
+    public void setUserRoles(List<UserRole> userRoles) {
+        this.userRoles = userRoles;
     }
 
     @Override

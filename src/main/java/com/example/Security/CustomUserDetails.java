@@ -10,9 +10,9 @@ import java.util.Collection;
 /**
  * Created by Michael on 24/10/2016.
  */
-public class CustomUserDetails extends UserAccount implements UserDetails {
+/* public class CustomUserDetails extends UserAccount implements UserDetails {
 
-    
+
     public CustomUserDetails(UserAccount userAccount, UserRole userRole) {
         super(userAccount,userRole);
     }
@@ -20,7 +20,11 @@ public class CustomUserDetails extends UserAccount implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
-    }
+        /*
+          String roles=StringUtils.collectionToCommaDelimitedString(userRoles);
+  return AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
+         */
+    /*}
 
     @Override
     public String getUsername() {
@@ -47,3 +51,4 @@ public class CustomUserDetails extends UserAccount implements UserDetails {
         return false;
     }
 }
+        */

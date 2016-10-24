@@ -16,10 +16,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = {"com.example"})
 @EntityScan("com.example")
-@ComponentScan(basePackages = { "com.example" })
+@ComponentScan(basePackages = {"com.example"})
 public class PostgresqlSecurityApplication {
     private static final Logger log = LoggerFactory.getLogger(PostgresqlSecurityApplication.class);
 
@@ -40,8 +44,14 @@ public class PostgresqlSecurityApplication {
             log.info("Start initialization");
             userRolesRepository.save(new UserRole("ADMIN"));
             userRolesRepository.save(new UserRole("USER"));
-           userAccountRepository.save(new UserAccount("Michael","123",userRolesRepository.findByUserRole("ADMIN").get(0)));
-            userAccountRepository.save(new UserAccount("Sasha", "qaz",userRolesRepository.findByUserRole("USER").get(0)));
+            userAccountRepository.save(new UserAccount("Michael", "123"));
+            userAccountRepository.save(new UserAccount("Sasha", "qaz"));
+            List<UserRole> userRoles = new ArrayList<>();
+            userRoles.add(userRolesRepository.findByUserRole("ADMIN").get(0));
+            userAccountRepository.findByUserName("Michael").get(0).setUserRoles(userRoles);
+            userRoles.clear();
+            userRoles.add(userRolesRepository.findByUserRole("USER").get(0));
+            userAccountRepository.findByUserName("Sasha").get(0).setUserRoles(userRoles);
 
 
 //            log.info("Before " + userRepository.count());

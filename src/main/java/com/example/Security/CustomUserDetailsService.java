@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by Michael on 24/10/2016.
  */
-@Service("customUserDetailsService")
+/*@Service("customUserDetailsService")
 public class CustomUserDetailsService implements UserDetailsService {
     private final UserAccountRepository userAccountRepository;
     private final UserRolesRepository userRolesRepository;
@@ -40,4 +40,4 @@ public class CustomUserDetailsService implements UserDetailsService {
         }
 
     }
-}
+}*/

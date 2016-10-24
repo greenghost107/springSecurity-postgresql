@@ -8,8 +8,8 @@ spring:
     database: POSTGRESQL
     show-sql: true
     hibernate:
-#      ddl-auto: create-drop
-      ddl-auto: none
+      ddl-auto: create-drop
+#      ddl-auto: update
 
 server:
   port: 8080

@@ -1,4 +1,4 @@
-package com.example.Data;
+package com.example.Domain;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,9 +10,9 @@ import java.util.List;
  * Created by Michael on 16/10/2016.
  */
 @Repository
-public interface UserRepository extends JpaRepository<Users, Long> {
-    List<Users> findById(Long id);
-    List<Users> findByUserName(String userName);
+public interface UserAccountRepository extends JpaRepository<UserAccount, Long> {
+
+    List<UserAccount> findByUserName(String userName);
 
 }
 
